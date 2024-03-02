@@ -671,7 +671,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="contact-form contact-form-wrap form-style-one wow fadeInUp delay-0-4s">
-                            <form id="contactForm" class="contactForm" name="contactForm" action="contact.php" method="post">
+                            <form id="contactForm" class="contactForm" name="contactForm" action="" method="post">
                                 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -815,6 +815,30 @@
     <script src="assets/js/jquery.ajaxchimp.min.js"></script>
     <script src="assets/js/form-validator.min.js"></script>
     <script src="assets/js/contact-form-script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            // generate a five digit number for the contact_number variable
+            this.contact_number.value = Math.random() * 100000 | 0;
+        
+            // these IDs from the previous steps
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+    </script>
+<script>
+
+    (function(){
+        emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your EmailJS user ID
+    })();
+</script>
 
 </body>
 </html>
