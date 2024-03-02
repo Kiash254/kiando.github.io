@@ -1,14 +1,13 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $phone_number = $_POST["phone_number"];
-    $subject = $_POST["subject"];
-    $message = $_POST["message"];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone_number = $_POST['phone_number'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
 
     $EmailTo = "codewithkiash@gmail.com";
     $bodySubject = "New Message Received";
-
     $Body = "";
     $Body .= "Name: ";
     $Body .= $name;
@@ -27,9 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Body .= "\n";
 
     $success = mail($EmailTo, $bodySubject, $Body);
-
     if ($success){
-       echo "success";
+        echo "success";
     }else{
         echo "Something went wrong :(";
     }
